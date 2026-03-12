@@ -1,5 +1,5 @@
 const http = require('http');
-const jobs = [];
+const jobs = {};
 const server = http.createServer();
 
 
@@ -23,7 +23,7 @@ server.on('request', (req, res) => {
 });
 
 function processJob(jobId) {
-    jobs.push(jobId);
+    jobs[jobId] = 'pending';
     setTimeout(() => {
         console.log(`Job ${jobId} completed`);
         jobs[jobId] = 'completed';
